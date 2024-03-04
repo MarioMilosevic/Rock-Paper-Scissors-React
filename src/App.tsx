@@ -16,7 +16,7 @@ const App = () => {
     "First to 5 points wins the game !"
   );
   const options = ["✊", "✋", "✌"];
-
+  let modalPosition = "-inset-full";
   useEffect(() => {
     checkForWinner(playerScore, computerScore);
     console.log("pozvano");
@@ -120,9 +120,10 @@ const App = () => {
 
   return (
     <>
+      {playerScore === 3 && <Modal  winner={"Player"}/>}
+      {computerScore === 3 && <Modal  winner={"Computer"} />}
       <Header />
       <Score text={text} information={information} />
-      <Modal />
       <Wrapper>
         <Player name={"Player"} score={playerScore} choice={choice} />
         <Player
