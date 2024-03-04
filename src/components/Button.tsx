@@ -1,6 +1,6 @@
 type ButtonProps = {
   option: string;
-  clickHandler: () => string;
+  clickHandler: () => React.MouseEvent;
 };
 
 const Button = ({ option, clickHandler }: ButtonProps) => {

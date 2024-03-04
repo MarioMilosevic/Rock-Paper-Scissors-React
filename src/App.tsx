@@ -16,7 +16,6 @@ const App = () => {
     "First to 5 points wins the game !"
   );
   const options = ["✊", "✋", "✌"];
-  let modalPosition = "-inset-full";
   useEffect(() => {
     checkForWinner(playerScore, computerScore);
     console.log("pozvano");
@@ -33,7 +32,7 @@ const App = () => {
     checkRoundWinner(playerChoice, computerChoice);
   };
 
-  const checkRoundWinner = (player, computer) => {
+  const checkRoundWinner = (player: string, computer: string) => {
     if (player === "✊" && computer === "✊") {
       console.log("nerijeseno");
       setText("It's a tie !");
@@ -108,7 +107,7 @@ const App = () => {
     }
   };
 
-  const checkForWinner = (a, b) => {
+  const checkForWinner = (a: number, b: number) => {
     if (a === 3) {
       return console.log("A won");
     } else if (b === 3) {
@@ -116,12 +115,23 @@ const App = () => {
     }
   };
 
+  const startNewGame = () => {
+    setPlayerScore(0);
+    setComputerScore(0);
+    setText("Choose your weapon");
+    setInformation("First to 5 points wins the game !");
+  };
+
   // napravim 3 objekta u array name:"scissors", emoji:taj emoji, id:random
 
   return (
     <>
-      {playerScore === 3 && <Modal  winner={"Player"}/>}
-      {computerScore === 3 && <Modal  winner={"Computer"} />}
+      {playerScore === 3 && (
+        <Modal winner={"Player"} startNewGame={startNewGame} />
+      )}
+      {computerScore === 3 && (
+        <Modal winner={"Computer"} startNewGame={startNewGame} />
+      )}
       <Header />
       <Score text={text} information={information} />
       <Wrapper>
