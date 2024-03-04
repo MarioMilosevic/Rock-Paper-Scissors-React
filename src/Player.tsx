@@ -1,10 +1,15 @@
 import { useState } from "react";
 type PlayerProps = {
   name: string;
+  score:number
 };
 
-const Player = ({ name }: PlayerProps) => {
-  const [score, setScore] = useState(0);
+const Player = ({ name, score}: PlayerProps) => {
+//   const updateScore = () => {
+//     setScore((prev) => prev += result
+//     )
+//   }
+
   return (
     <div className="text-center text-gray-50 flex flex-col px-14 pb-10">
       <span className="text-9xl">?</span>
