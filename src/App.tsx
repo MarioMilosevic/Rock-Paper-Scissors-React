@@ -2,20 +2,21 @@ import Header from "./assets/components/Header";
 import Score from "./Score";
 import Player from "./Player";
 import Button from "./assets/components/Button";
+import Wrapper from "./assets/components/Wrapper";
 const App = () => {
   return (
     <>
       <Header />
       <Score />
-      <div className="flex justify-center">
+      <Wrapper>
         <Player />
         <Player />
-      </div>
-      <div className="flex justify-center">
-      <Button />
-      <Button />
-      <Button />
-      </div>
+      </Wrapper>
+      <Wrapper>
+        <Button />
+        <Button />
+        <Button />
+      </Wrapper>
     </>
   );
 };
