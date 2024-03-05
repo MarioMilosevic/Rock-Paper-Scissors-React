@@ -1,4 +1,3 @@
-import { useState } from "react";
 type PlayerProps = {
   name: string;
   score:number,

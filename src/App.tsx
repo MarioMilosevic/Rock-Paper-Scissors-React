@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Header from "./components/Header";
 import Score from "./Score";
 import Player from "./Player";
@@ -15,103 +15,52 @@ const App = () => {
   const [information, setInformation] = useState(
     "First to 5 points wins the game !"
   );
-  const options = ["✊", "✋", "✌"];
-  useEffect(() => {
-    checkForWinner(playerScore, computerScore);
-    console.log("pozvano");
-  }, [playerScore, computerScore]);
 
-  const callAction = (e) => {
+  const options = ["✊", "✋", "✌"];
+
+  const callAction = (e: React.MouseEvent<Element, MouseEvent>) => {
     const playerChoice = e.target.textContent;
     const random = Math.floor(Math.random() * options.length);
     const computerChoice = options[random];
     setChoice(playerChoice);
     setComputerChoice(computerChoice);
-    console.log(playerChoice, computerChoice);
-    console.log(playerScore, computerScore);
     checkRoundWinner(playerChoice, computerChoice);
   };
 
   const checkRoundWinner = (player: string, computer: string) => {
     if (player === "✊" && computer === "✊") {
-      console.log("nerijeseno");
       setText("It's a tie !");
       setInformation("Rock ties with rock");
     } else if (player === "✌" && computer === "✌") {
-      console.log("nerijeseno");
       setText("It's a tie !");
       setInformation("Scissors ties with scissors");
     } else if (player === "✋" && computer === "✋") {
-      console.log("nerijeseno");
       setText("It's a tie !");
       setInformation("Paper ties with Paper");
     } else if (player === "✊" && computer === "✋") {
-      console.log("Komjuter dobio");
-      setComputerScore((prev) => {
-        prev += 1;
-        // checkForWinner(playerScore, computerScore);
-        return prev;
-      });
-
+      setComputerScore((prev) => (prev += 1));
       setText("Computer won!");
       setInformation("Paper beats rock");
     } else if (player === "✊" && computer === "✌") {
-      console.log("Plejer dobio");
-      setPlayerScore((prev) => {
-        prev += 1;
-        // checkForWinner(playerScore, computerScore);
-        return prev;
-      });
-
+      setPlayerScore((prev) => (prev += 1));
       setText("You won!");
       setInformation("Rock beats scissors");
     } else if (player === "✋" && computer === "✊") {
-      console.log("plejer dobio");
-      setPlayerScore((prev) => {
-        prev += 1;
-        // checkForWinner(playerScore, computerScore);
-        return prev;
-      });
-
+      setPlayerScore((prev) => (prev += 1));
       setText("You won!");
       setInformation("Paper beats rock");
     } else if (player === "✋" && computer === "✌") {
-      console.log("Kompjuter dobio");
-      setComputerScore((prev) => {
-        prev += 1;
-        // checkForWinner(playerScore, computerScore);
-        return prev;
-      });
-
+      setComputerScore((prev) => (prev += 1));
       setText("Computer won!");
       setInformation("Scissors beat paper");
     } else if (player === "✌" && computer === "✋") {
-      console.log("Plejer dobio");
-      setPlayerScore((prev) => {
-        prev += 1;
-        // checkForWinner(playerScore, computerScore);
-        return prev;
-      });
-
+      setPlayerScore((prev) => (prev += 1));
       setText("You won");
       setInformation("Scissors beat paper");
     } else if (player === "✌" && computer === "✊") {
-      console.log("kompjuter dobio");
-      setComputerScore((prev) => {
-        prev += 1;
-        // checkForWinner(playerScore, computerScore);
-        return prev;
-      });
+      setComputerScore((prev) => (prev += 1));
       setText("Computer won");
       setInformation("Rock beats scissors");
-    }
-  };
-
-  const checkForWinner = (a: number, b: number) => {
-    if (a === 3) {
-      return console.log("A won");
-    } else if (b === 3) {
-      return console.log("B won");
     }
   };
 
@@ -121,8 +70,6 @@ const App = () => {
     setText("Choose your weapon");
     setInformation("First to 5 points wins the game !");
   };
-
-  // napravim 3 objekta u array name:"scissors", emoji:taj emoji, id:random
 
   return (
     <>
