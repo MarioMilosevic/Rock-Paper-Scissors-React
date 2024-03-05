@@ -9,7 +9,7 @@ import Modal from "./components/Modal";
 const App = () => {
   const [playerScore, setPlayerScore] = useState(0);
   const [computerScore, setComputerScore] = useState(0);
-  const [choice, setChoice] = useState("?");
+  const [playerChoice, setPlayerChoice] = useState("?");
   const [computerChoice, setComputerChoice] = useState("?");
   const [text, setText] = useState("Choose your weapon");
   const [information, setInformation] = useState(
@@ -18,12 +18,13 @@ const App = () => {
 
   const options = ["✊", "✋", "✌"];
 
-  const callAction = (e: React.MouseEvent<Element, MouseEvent>) => {
-    const playerChoice = e.target.textContent;
-    const random = Math.floor(Math.random() * options.length);
-    const computerChoice = options[random];
-    setChoice(playerChoice);
-    setComputerChoice(computerChoice);
+  const callAction = (e:React.MouseEvent) => {
+    const choice = e.target.name
+    // const random = Math.floor(Math.random() * options.length);
+    const compChoice = options[Math.floor(Math.random() * options.length)];
+
+    setPlayerChoice(choice);
+    setComputerChoice(compChoice);
     checkRoundWinner(playerChoice, computerChoice);
   };
 
@@ -82,7 +83,7 @@ const App = () => {
       <Header />
       <Score text={text} information={information} />
       <Wrapper>
-        <Player name={"Player"} score={playerScore} choice={choice} />
+        <Player name={"Player"} score={playerScore} choice={playerChoice} />
         <Player
           name={"Computer"}
           score={computerScore}
