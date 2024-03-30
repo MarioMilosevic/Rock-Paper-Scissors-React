@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Header from "./components/Header";
-import Score from "./Score";
-import Player from "./Player";
+import Score from "./components/Score";
+import Player from "./components/Player";
 import Button from "./components/Button";
 import Wrapper from "./components/Wrapper";
 import Modal from "./components/Modal";
@@ -18,9 +18,10 @@ const App = () => {
 
   const options = ["✊", "✋", "✌"];
 
-  const callAction = (e:React.MouseEvent) => {
-    const choice = e.target.name
-    // const random = Math.floor(Math.random() * options.length);
+  const callAction = (e: React.MouseEvent) => {
+    console.log("klik")
+    const target = e.target as HTMLInputElement;
+    const choice = target.name
     const compChoice = options[Math.floor(Math.random() * options.length)];
 
     setPlayerChoice(choice);
@@ -74,10 +75,10 @@ const App = () => {
 
   return (
     <>
-      {playerScore === 3 && (
+      {playerScore === 5 && (
         <Modal winner={"Player"} startNewGame={startNewGame} />
       )}
-      {computerScore === 3 && (
+      {computerScore === 5 && (
         <Modal winner={"Computer"} startNewGame={startNewGame} />
       )}
       <Header />

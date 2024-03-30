@@ -1,10 +1,11 @@
+import { ReactNode } from "react";
 
-const Wrapper = ({children}) => {
-  return (
-    <div className='flex justify-center'>
-      {children}
-    </div>
-  )
-}
+type WrapperTypes = {
+  children: ReactNode;
+};
 
-export default Wrapper
+const Wrapper = ({ children }: WrapperTypes) => {
+  return <div className="flex justify-center">{children}</div>;
+};
+
+export default Wrapper;
