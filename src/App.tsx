@@ -18,15 +18,15 @@ const App = () => {
 
   const options = ["✊", "✋", "✌"];
 
+
   const callAction = (e: React.MouseEvent) => {
-    console.log("klik")
     const target = e.target as HTMLInputElement;
-    const choice = target.name
+    const choice = target.name;
     const compChoice = options[Math.floor(Math.random() * options.length)];
 
     setPlayerChoice(choice);
     setComputerChoice(compChoice);
-    checkRoundWinner(playerChoice, computerChoice);
+    checkRoundWinner(choice, compChoice);
   };
 
   const checkRoundWinner = (player: string, computer: string) => {
